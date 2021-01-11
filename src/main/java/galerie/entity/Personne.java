@@ -5,13 +5,14 @@ import javax.persistence.*;
 import lombok.*;
 
 
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString(callSuper = true)
 @Entity // Une entité JPA
+@Inheritance(strategy = InheritanceType.JOINED)
 
-public class Galerie {
+public class Personne {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Integer id;
-
+    
     @Column(unique=true)
     @NonNull
     private String nom;
@@ -19,8 +20,12 @@ public class Galerie {
     @Column(unique=true)
     @NonNull
     private String adresse;
-
     
-    @OneToMany(mappedBy = "organisateur")
-    private List<Exposition> evenements = new LinkedList<>();
+    
+    @OneToMany(mappedBy = "client")
+    private List<Transaction> achats = new LinkedList<>();
+    
+    
+    
+    
 }
