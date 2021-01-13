@@ -41,13 +41,13 @@ public class RepositoryTest {
         
         //Pour la table Exposition
         log.info("On compte les enregistrements de la table 'Exposition'");
-        int combienDansLeJeuDeTest2 = 1;
+        int combienDansLeJeuDeTest2 = 2;
         long nombre2 = expositionDAO.count();
         assertEquals(combienDansLeJeuDeTest2, nombre2, "On doit trouver 1 exposition" );
         
         //Pour la table Personne
         log.info("On compte les enregistrements de la table 'Personne'");
-        int combienDansLeJeuDeTest3 = 1;
+        int combienDansLeJeuDeTest3 = 2;
         long nombre3 = personneDAO.count();
         assertEquals(combienDansLeJeuDeTest3, nombre3, "On doit trouver 1 personne" );
     }
