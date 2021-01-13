@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package galerie.dao;
-import galerie.entity.Galerie;
+import galerie.entity.Personne;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Salomé Chevailler
  */
-public interface PersonneRepository extends JpaRepository<Galerie, Integer>{
+public interface PersonneRepository extends JpaRepository<Personne, Integer>{
     
 }

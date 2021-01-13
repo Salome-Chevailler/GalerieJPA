@@ -22,5 +22,6 @@ public class Galerie {
 
     
     @OneToMany(mappedBy = "organisateur")
-    private List<Exposition> evenements = new LinkedList<>();
+    public List<Exposition> evenements = new LinkedList<>();
+    
 }

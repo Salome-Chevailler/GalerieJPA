@@ -16,14 +16,14 @@ public class Tableau {
     @NonNull
     private String titre;
     
-    @Column(unique=true)
+    @Column
     @NonNull
     private String support;
 
-    @Column(unique=true)
+    @Column
     private int largeur;
     
-    @Column(unique=true)
+    @Column
     private int hauteur;
     
     @ManyToMany(mappedBy = "oeuvres")
