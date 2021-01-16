@@ -3,6 +3,7 @@ package galerie.dao;
 import galerie.entity.Galerie;
 import galerie.entity.Exposition;
 import galerie.entity.Personne;
+import galerie.entity.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
@@ -203,6 +204,44 @@ public class RepositoryTest {
 			// Si on arrive ici c'est normal, on a eu l'exception attendue
 	}
 	assertNull(nouvelle3.getId(), "La clé n'a pas été générée, l'entité n'est pas enregistrée");
+    }
+    
+    @Test
+    //Test permettant de tester la méthode CAannuel() de Galerie
+    public void calculerCAAnnuel(){
+        Galerie g = new Galerie(1, "Galerie", "Adresse");
+        Exposition e = new Exposition(1, "Intitule", 1, g);
+        Transaction t = new Transaction(1, LocalDate.now(), 10000, e);
+        assertTrue(g.getEvenements().isEmpty());
+        assertTrue(e.getVentes().isEmpty());
+        g.ajouterExposition(e);
+        assertFalse(g.getEvenements().isEmpty());
+        e.ajouterTransaction(t);
+        assertFalse(e.getVentes().isEmpty());
+        assertEquals(10000, g.CAannuel(LocalDate.now().getYear()));
+    }
+    
+    @Test
+    //Test permettant de tester la méthode CA() de Exposition
+    public void calculerCA(){
+        Galerie g = new Galerie(1, "Nom", "Adresse");
+        Exposition e = new Exposition(1, "Intitule", 1, g);
+        Transaction t = new Transaction(1, LocalDate.now(), 10000, e);
+        assertTrue(e.getVentes().isEmpty());
+        e.ajouterTransaction(t);
+        assertFalse(e.getVentes().isEmpty());
+        assertEquals(10000, e.CA());
+    }
+    
+    @Test 
+    //Test permettant de tester la méthode budgetArt() de Personne
+    public void calculerBudgetArt(){
+        Personne p = new Personne("Nom", "Adresse");
+        Transaction t = new Transaction(1, LocalDate.now(), 10000, p);
+        assertTrue(p.getAchats().isEmpty());
+        p.ajouterTransaction(t);
+        assertFalse(p.getAchats().isEmpty());
+        assertEquals(10000, p.budgetArt(LocalDate.now().getYear()));
     }
   /*
     @Test

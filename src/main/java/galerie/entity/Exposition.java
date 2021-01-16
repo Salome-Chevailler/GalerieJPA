@@ -34,6 +34,7 @@ public class Exposition {
     @ManyToMany
     @JoinTable(name="expo_tableau",joinColumns = @JoinColumn(name = "exposition_id", referencedColumnName="id"),inverseJoinColumns = @JoinColumn(name = "tableau_id",  referencedColumnName="id")) 
     private List<Tableau> oeuvres = new LinkedList<>();
+
     
     
     public float CA(){
@@ -44,7 +45,7 @@ public class Exposition {
         return chiffreAff;
     }
     
-    public void Exposition(int id, String intitule, int duree, Galerie organisateur){
+    public Exposition(int id, String intitule, int duree, Galerie organisateur){
         this.id = id;
         this.debut = LocalDate.now();
         this.intitule = intitule;

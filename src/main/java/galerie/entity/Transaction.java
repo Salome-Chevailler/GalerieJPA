@@ -29,4 +29,18 @@ public class Transaction {
     @ManyToOne
     @NonNull
     private Personne client;
+    
+    public Transaction(int id, LocalDate venduLe, float prixVente, Exposition expo){
+        this.id = id;
+        this.venduLe = venduLe;
+        this.prixVente = prixVente;
+        this.lieuDeVente = expo;
+    }
+    
+    public Transaction(int id, LocalDate venduLe, float prixVente, Personne p){
+        this.id = id;
+        this.venduLe = venduLe;
+        this.prixVente = prixVente;
+        this.client = p;
+    }
 }
