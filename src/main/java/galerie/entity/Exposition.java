@@ -35,4 +35,12 @@ public class Exposition {
     @JoinTable(name="expo_tableau",joinColumns = @JoinColumn(name = "exposition_id", referencedColumnName="id"),inverseJoinColumns = @JoinColumn(name = "tableau_id",  referencedColumnName="id")) 
     private List<Tableau> oeuvres = new LinkedList<>();
     
+    
+    public float CA(){
+        float chiffreAff = 0;
+        for(Transaction t : ventes){
+            chiffreAff += t.getPrixVente();
+        }
+        return chiffreAff;
+    }
 }
