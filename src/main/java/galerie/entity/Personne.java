@@ -35,5 +35,8 @@ public class Personne {
         return budget;
     }
     
-    
+    public void ajouterTransaction(Transaction t){
+        this.achats.add(t);
+    }
+ 
 }

@@ -43,4 +43,16 @@ public class Exposition {
         }
         return chiffreAff;
     }
+    
+    public void Exposition(int id, String intitule, int duree, Galerie organisateur){
+        this.id = id;
+        this.debut = LocalDate.now();
+        this.intitule = intitule;
+        this.duree = duree;
+        this.organisateur = organisateur;
+    }
+    
+    public void ajouterTransaction(Transaction t){
+        this.ventes.add(t);
+    }
 }

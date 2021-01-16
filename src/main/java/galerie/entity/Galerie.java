@@ -34,5 +34,15 @@ public class Galerie {
         return chiffreAffAnnuel;
     }
     
+    public Galerie(int id, String nom, String ad){
+        this.id = id;
+        this.nom = nom;
+        this.adresse = ad;
+    }
+    
+    public void ajouterExposition(Exposition e){
+        this.evenements.add(e);
+    }
+    
     
 }

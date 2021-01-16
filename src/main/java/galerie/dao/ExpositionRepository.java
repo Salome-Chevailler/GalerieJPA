@@ -6,7 +6,8 @@
 package galerie.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import galerie.entity.Exposition;
-
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 /**
  *
  * @author Salomé Chevailler
@@ -17,5 +18,6 @@ public interface ExpositionRepository extends JpaRepository<Exposition, Integer>
      * @param id la clé primaire de l'exposition
      * @return le chiffre d'affaires de cette exposition
      */
-  //  float chiffreAffairePour(Integer id);
+  //  @Query("SELECT SUM(prix_vente) AS budget FROM Exposition" + "INNER JOIN Transaction ON Transaction.exposition_id = Exposition.id" + "WHERE Exposition.id = :id GROUP BY Exposition.id", nativeQuery = true)
+  //  public float chiffreAffairePour(int id);
 }
