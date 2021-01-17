@@ -243,31 +243,20 @@ public class RepositoryTest {
         assertFalse(p.getAchats().isEmpty());
         assertEquals(10000, p.budgetArt(LocalDate.now().getYear()));
     }
-  /*
+  
     @Test
     @Sql("test-data.sql")
-    public void onNePeutPasDetruireUneGalerieQuiADesExpositions() {
-	log.info("Détruire une galerie avec des expositions");
-	Galerie saatchi = galerieDAO.getOne(1);
-	assertEquals("Saatchi", saatchi.getNom());
-        // On crée une nouvelle exposition
-        Exposition expo = new Exposition();
-        expo.setDebut(LocalDate.of(2020, Month.MARCH, 15));
-        expo.setIntitule("Exposition");
-        expo.setDuree(1);
-        
-        // On ajoute l'exposition aux événements de la galerie
-        // saatchi.evenements.add(expo);
-        saatchi.getEvenements().add(expo);
-        // Il y a des expositions dans la galerie 'Saatchi'
-	assertFalse(saatchi.getEvenements().isEmpty());
-	// Si on essaie de détruire cette galerie, on doit avoir une exception
-	// de violation de contrainte d'intégrité
-	assertThrows(DataIntegrityViolationException.class, () -> {
-            galerieDAO.delete(saatchi);
-            galerieDAO.flush(); // Pour forcer la validation de la transaction
-	});
+    public void onDetruitUneGalerie(){
+        log.info("Détruire une galerie");
+        Galerie g = galerieDAO.getOne(1);
+        assertEquals("Saatchi", g.getNom());
+        galerieDAO.delete(g);
+        Optional o = galerieDAO.findById(1);
+        assertFalse(o.isPresent(), "Cette galerie n'existe pas");
     }
-    */
+    
+    
+    
+    
 
 }
